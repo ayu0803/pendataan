@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Data Jemaat Gereja </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+ <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+  </ion-refresher-content>
+</ion-refresher>
+
+<ion-card *ngFor="let gereja of gerejas">
+  <ion-card-header>
+    <ion-card-subtitle>Tempat/Tanggal Lahir: {{gereja.ttl}}, Jenis Kelamin: {{gereja.jeniskelamin}}</ion-card-subtitle>
+    <ion-card-title>{{gereja.nama}}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    No Hp/ WA: {{gereja.nohp}}
+    Alamat: {{gereja.alamat}},
+    Pekerjaan: {{gereja.pekerjaan}}
+  </ion-card-content>
+</ion-card>
+
+
+
+<ion-infinite-scroll  (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>
